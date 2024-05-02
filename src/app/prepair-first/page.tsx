@@ -3,5 +3,5 @@ export default function PrepairFirstPage() {
     <>
       <h1>prepair-first</h1>
     </>
-  )
+  );
 }

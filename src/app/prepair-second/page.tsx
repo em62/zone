@@ -3,5 +3,5 @@ export default function PrepairSecondPage() {
     <>
       <h1>prepair second</h1>
     </>
-  )
+  );
 }

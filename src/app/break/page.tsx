@@ -3,5 +3,5 @@ export default function BreakPage() {
     <>
       <h1>break page</h1>
     </>
-  )
+  );
 }
