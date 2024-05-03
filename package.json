@@ -9,6 +9,7 @@
     "lint": "next lint",
     "format": "prettier --ignore-path .gitignore --write \"**/*.{ts,tsx,css,scss}\"",
     "test": "jest",
+    "test:watch": "jest --watch",
     "prepare": "husky install"
   },
   "dependencies": {
