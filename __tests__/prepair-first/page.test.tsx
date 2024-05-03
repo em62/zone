@@ -1,6 +1,6 @@
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
-import PrepairFirstPage from "../../app/prepair-first/page";
+import PrepairFirstPage from "@/app/prepair-first/page";
 
 describe("PrepairFirstPageコンポーネント", () => {
   test("テキストのレンダリングを確認する", () => {
