@@ -1,11 +1,11 @@
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
-import BreakPage from "../../app/break/page";
+import FocusPage from "@/app/focus/page";
 
-describe("breakコンポーネント", () => {
+describe("focusコンポーネント", () => {
   test("レンダリング", () => {
-    render(<BreakPage />);
-    const heading = screen.getByText("break page");
+    render(<FocusPage />);
+    const heading = screen.getByText("focus");
     expect(heading).toBeInTheDocument();
   });
 });
