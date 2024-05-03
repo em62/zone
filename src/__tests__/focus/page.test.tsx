@@ -1,11 +1,11 @@
-import Home from "@/app/page";
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
+import FocusPage from "../../app/focus/page";
 
-describe("Homeコンポーネント", () => {
+describe("focusコンポーネント", () => {
   test("レンダリング", () => {
-    render(<Home />);
-    const heading = screen.getByText("front");
+    render(<FocusPage />);
+    const heading = screen.getByText("focus");
     expect(heading).toBeInTheDocument();
   });
 });

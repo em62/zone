@@ -1,8 +1,6 @@
-import Home from "@/app/page";
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
-import PrepairFirstPage from "./page";
-import BreakPage from "./page";
+import BreakPage from "../../app/break/page";
 
 describe("breakコンポーネント", () => {
   test("レンダリング", () => {
