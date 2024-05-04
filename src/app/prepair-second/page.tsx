@@ -1,24 +1,23 @@
-"use client"
+"use client";
 
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function PrepairSecondPage() {
-  const [count, setCount] = useState(60)
-  const router = useRouter()
+  const [count, setCount] = useState(60);
+  const router = useRouter();
 
   useEffect(() => {
-    if(count > 0) {
-
+    if (count > 0) {
       const intervalId = setInterval(() => {
-        setCount(count - 1)
-      }, 1000)
-  
-      return () => clearInterval(intervalId)
+        setCount(count - 1);
+      }, 1000);
+
+      return () => clearInterval(intervalId);
     } else {
-      router.push("/focus")
+      router.push("/focus");
     }
-  }, [count, router])
+  }, [count, router]);
 
   return (
     <>
@@ -28,8 +27,8 @@ export default function PrepairSecondPage() {
         </div>
         <div className="text-4xl">🌲</div>
         <div className="absolute bottom-5 right-5 text-gray-500 text-sm">
-        {count}
-      </div>
+          {count}
+        </div>
       </div>
     </>
   );
