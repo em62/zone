@@ -3,5 +3,5 @@ export default function FocusPage() {
     <>
       <div>focus</div>
     </>
-  );
+  )
 }
