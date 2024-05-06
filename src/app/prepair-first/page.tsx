@@ -28,11 +28,11 @@ export default function PrepairFirstPage() {
   }, [count, round, router])
 
   return (
-    <div className="flex min-h-screen flex-col justify-center items-center">
-      <div className="absolute top-0 mt-10 text-gray-500 text-sm">画面の表示に合わせて深呼吸をします。</div>
+    <div className="flex min-h-screen flex-col items-center justify-center">
+      <div className="absolute top-0 mt-10 text-sm text-gray-500">画面の表示に合わせて深呼吸をします。</div>
       <div>{status[round % 4]}</div>
-      <div className="absolute bottom-5 left-5 text-gray-500 text-sm">{count}</div>
-      <div className="absolute bottom-5 right-5 text-gray-500 text-sm">{Math.floor(round / 4)} / 10</div>
+      <div className="absolute bottom-5 left-5 text-sm text-gray-500">{count}</div>
+      <div className="absolute bottom-5 right-5 text-sm text-gray-500">{Math.floor(round / 4)} / 10</div>
     </div>
   )
 }

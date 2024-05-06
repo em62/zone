@@ -5,7 +5,7 @@ type Props = {
 
 export const Button = ({ children, onClick }: Props) => {
   return (
-    <button className="bg-white text-black text-sm rounded py-3 px-4 whitespace-nowrap" onClick={onClick}>
+    <button className="whitespace-nowrap rounded bg-white px-4 py-3 text-sm text-black" onClick={onClick}>
       {children}
     </button>
   )
