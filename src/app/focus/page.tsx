@@ -38,13 +38,13 @@ export default function FocusPage() {
 
   return (
     <>
-      <div className="flex min-h-screen justify-center items-center">
-        <div className="absolute top-0 mt-10 text-gray-500 text-sm">focus</div>
-        <div className="font-semibold text-4xl">
+      <div className="flex min-h-screen items-center justify-center">
+        <div className="absolute top-0 mt-10 text-sm text-gray-500">focus</div>
+        <div className="text-4xl font-semibold">
           {Math.floor(count / 60)}:{(count % 60).toString().padStart(2, '0')}
         </div>
         {!run && (
-          <div className="flex absolute bottom-0 mb-10 text-gray-500 text-sm">
+          <div className="absolute bottom-0 mb-10 flex text-sm text-gray-500">
             <div>
               <Button onClick={handleStart}>start</Button>
             </div>
@@ -54,7 +54,7 @@ export default function FocusPage() {
           </div>
         )}
         {run && (
-          <div className="absolute bottom-0 mb-10 text-gray-500 text-sm">
+          <div className="absolute bottom-0 mb-10 text-sm text-gray-500">
             <Button onClick={handleStop}>stop</Button>
           </div>
         )}

@@ -24,9 +24,9 @@ export default function BreakPage() {
 
   return (
     <>
-      <div className="flex min-h-screen justify-center items-center">
-        <div className="absolute top-0 mt-10 text-gray-500 text-sm">リラックスしましょう。</div>
-        <div className="font-semibold text-4xl">
+      <div className="flex min-h-screen items-center justify-center">
+        <div className="absolute top-0 mt-10 text-sm text-gray-500">リラックスしましょう。</div>
+        <div className="text-4xl font-semibold">
           {Math.floor(count / 60)
             .toString()
             .padStart(2, '0')}
