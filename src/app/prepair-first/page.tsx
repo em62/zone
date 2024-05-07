@@ -40,6 +40,8 @@ export default function PrepairFirstPage() {
           ></div>
         </div>
       </div>
+      <div className="absolute bottom-5 left-5 text-sm text-gray-500">{count}</div>
+      <div className="absolute bottom-5 right-5 text-sm text-gray-500">{Math.ceil(count / 16)} / 10</div>
     </div>
   )
 }
