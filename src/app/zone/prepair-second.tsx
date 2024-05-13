@@ -1,11 +1,12 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
+import { update } from '@/lib/features/currentPage/currentPageSlice'
+import { useAppDispatch } from '@/lib/hooks'
 import { useEffect, useState } from 'react'
 
-export default function PrepairSecondPage() {
-  const [count, setCount] = useState(60)
-  const router = useRouter()
+export default function PrepairSecond() {
+  const [count, setCount] = useState(5) // 60
+  const dispatch = useAppDispatch()
 
   useEffect(() => {
     if (count > 0) {
@@ -15,9 +16,9 @@ export default function PrepairSecondPage() {
 
       return () => clearInterval(intervalId)
     } else {
-      router.push('/focus')
+      dispatch(update('zone'))
     }
-  }, [count, router])
+  }, [count])
 
   return (
     <>

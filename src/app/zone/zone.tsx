@@ -1,16 +1,17 @@
 'use client'
 
 import { Button } from '@/components/button'
-import { useRouter } from 'next/navigation'
+import { update } from '@/lib/features/currentPage/currentPageSlice'
+import { useAppDispatch } from '@/lib/hooks'
 import { useEffect, useState } from 'react'
 
-const initialCount = 60 * 50
+// 60 * 50
+const initialCount = 5
 
-export default function FocusPage() {
+export default function ZonePage() {
   const [count, setCount] = useState(initialCount)
   const [run, setRun] = useState(false)
-
-  const router = useRouter()
+  const dispatch = useAppDispatch()
 
   const handleStart = () => {
     setRun(true)
@@ -33,8 +34,10 @@ export default function FocusPage() {
       return () => clearInterval(intervalId)
     }
 
-    if (count == 0) router.push('/break')
-  }, [count, run, router])
+    if (count == 0) {
+      dispatch(update('break'))
+    }
+  }, [count, run])
 
   return (
     <>
