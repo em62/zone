@@ -15,7 +15,6 @@ export default function Temp({ user }: { user: User }) {
 
   const handleClick = () => {
     uploadData({
-      id: Math.floor(Math.random() * 100),
       user_id: user?.id,
       created_at: new Date().toISOString(),
     })
