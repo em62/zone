@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react'
 import PrepairSecondPage from '@/app/prepair-second/page'
-import { AppRouterContextProviderMock } from '../../provider/app-router-context-provider-mock'
+import { AppRouterContextProviderMock } from '@/utils/provider/app-router-context-provider-mock'
 
 describe('PrepairSecondPageコンポーネント', () => {
   test('テキストのレンダリングを確認する', () => {
