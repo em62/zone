@@ -1,10 +1,6 @@
 import Link from 'next/link'
 import { Button } from '@/components/button'
 import { createClient } from '@/utils/supabase/server'
-import { headers } from 'next/headers'
-import { redirect } from 'next/navigation'
-import { User } from '@supabase/supabase-js'
-import Image from 'next/image'
 import { Suspense } from 'react'
 import Account from '@/components/account'
 
