@@ -3,6 +3,7 @@ import { Button } from '@/components/button'
 import { createClient } from '@/utils/supabase/server'
 import { Suspense } from 'react'
 import Account from '@/components/account'
+import ClientLogin from '@/components/client-login'
 
 export default async function Home() {
   const supabase = createClient()
@@ -28,6 +29,7 @@ export default async function Home() {
           </Button>
         )}
       </div>
+      <ClientLogin user={user} />
     </div>
   )
 }
