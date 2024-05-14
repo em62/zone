@@ -31,7 +31,7 @@ export default async function RecordPage() {
             reveal a section of content.
           </p>
         </div>
-        {/* <Record user={user} /> */}
+        <Record user={user} />
       </div>
     </>
   )
