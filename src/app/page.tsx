@@ -25,7 +25,7 @@ export default async function Home() {
         </Button>
         {user && (
           <Button>
-            <Link href="/dashboard">Dashboard</Link>
+            <Link href="/record">Record</Link>
           </Button>
         )}
       </div>
