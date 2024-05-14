@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 import currentPageSlice from './features/currentPage/currentPageSlice'
+import loginSlice from './features/login/loginSlice'
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
       currentPage: currentPageSlice,
+      login: loginSlice,
     },
   })
 }
