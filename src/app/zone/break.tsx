@@ -1,13 +1,14 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
+import { update } from '@/lib/features/currentPage/currentPageSlice'
+import { useAppDispatch } from '@/lib/hooks'
 import { useEffect, useState } from 'react'
 //10 * 60
 const initialCount = 5
 
 export default function BreakPage() {
   const [count, setCount] = useState(initialCount)
-  const router = useRouter()
+  const dispatch = useAppDispatch()
 
   useEffect(() => {
     if (count > 0) {
@@ -17,7 +18,7 @@ export default function BreakPage() {
 
       return () => clearInterval(intervalId)
     } else {
-      router.push('/end')
+      dispatch(update('end'))
     }
   }, [count])
 
