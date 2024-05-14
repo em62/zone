@@ -1,34 +1,33 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
+import { update } from '@/lib/features/currentPage/currentPageSlice'
+import { useAppDispatch } from '@/lib/hooks'
 import { useEffect, useState } from 'react'
 
 const arr = ['in', 'hold-in', 'out', 'hold-out']
 
-export default function PrepairFirstPage() {
+export default function PrepairFirst() {
   const [count, setCount] = useState(0)
   const [round, setRound] = useState(0)
-  const [set, setSet] = useState(0)
   const [status, setStatus] = useState('')
-
-  const router = useRouter()
+  const dispatch = useAppDispatch()
 
   useEffect(() => {
-    if (round <= 40) {
+    if (round <= 4) {
+      // 40
       const intervalId = setInterval(() => {
         setCount(count + 1)
         if (count % 4 == 0) {
           setStatus(arr[round % 4])
           setRound(round + 1)
-          console.log(count)
         }
       }, 1000)
 
       return () => clearInterval(intervalId)
     } else {
-      router.push('/prepair-second')
+      dispatch(update('prepair2'))
     }
-  }, [count, round, router])
+  }, [count, round])
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center">
