@@ -1,13 +1,14 @@
 'use client'
 
-import { User, createClient } from '@supabase/supabase-js'
+import { User } from '@supabase/supabase-js'
 import { cache, useEffect, useState } from 'react'
+import { createClient } from '@/utils/supabase/client'
 
 export default function Record({ user }: { user: User }) {
   const [items, setItems] = useState<any>([])
   const [todayTimes, setTodayTimes] = useState(0)
 
-  const supabase = createClient(process.env.SUPABASE_URL!, process.env.SUPABASE_KEY!)
+  const supabase = createClient()
 
   const getData = cache(async () => {
     const { data } = await supabase.from('record').select().eq('user_id', user?.id)
