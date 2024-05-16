@@ -5,7 +5,7 @@ import { useAppDispatch } from '@/lib/hooks'
 import { User } from '@supabase/supabase-js'
 import { useEffect } from 'react'
 
-export default function ClientLogin({ user }: { user: User | null }) {
+export const ClientLoginDispatch = ({ user, children }: { user: User | null; children: React.ReactNode }) => {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
@@ -14,7 +14,7 @@ export default function ClientLogin({ user }: { user: User | null }) {
     } else {
       dispatch(logout())
     }
-  }, [])
+  }, [dispatch, user])
 
-  return <></>
+  return <>{children}</>
 }

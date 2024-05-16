@@ -1,9 +1,7 @@
-import Link from 'next/link'
-import { Button } from '@/components/button'
-import { createClient } from '@/utils/supabase/server'
 import { Suspense } from 'react'
+import { createClient } from '@/utils/supabase/server'
 import Account from '@/components/account'
-import ClientLogin from '@/components/client-login'
+import { ButtonGroup } from '@/components/button-group'
 
 export default async function Home() {
   const supabase = createClient()
@@ -20,16 +18,8 @@ export default async function Home() {
       </div>
       <h1 className="text-4xl font-semibold">ZONE</h1>
       <div className="mb-8 flex items-center gap-x-4">
-        <Button>
-          <Link href="/zone">Get in the ZONE</Link>
-        </Button>
-        {user && (
-          <Button>
-            <Link href="/record">Record</Link>
-          </Button>
-        )}
+        <ButtonGroup user={user} />
       </div>
-      <ClientLogin user={user} />
     </div>
   )
 }
