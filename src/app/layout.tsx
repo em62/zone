@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import StoreProvider from './StoreProvider'
 import { createClient } from '@/utils/supabase/server'
+import { ThemeProvider } from '@/components/theme-provider'
 import { ClientLoginDispatch } from '@/components/client-login-dispatch'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -23,11 +24,13 @@ export default async function RootLayout({
   } = await supabase.auth.getUser()
 
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <StoreProvider>
-          <ClientLoginDispatch user={user}>{children}</ClientLoginDispatch>
-        </StoreProvider>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          <StoreProvider>
+            <ClientLoginDispatch user={user}>{children}</ClientLoginDispatch>
+          </StoreProvider>
+        </ThemeProvider>
       </body>
     </html>
   )
