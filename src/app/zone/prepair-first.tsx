@@ -35,7 +35,7 @@ export default function PrepairFirst() {
       <div className="flex items-center justify-center">
         <div className="relative h-60 w-60 rounded-full border border-gray-500">
           <div
-            className={`absolute left-1/2 top-1/2 origin-center translate-x-[-50%] translate-y-[-50%] ${status == 'in' ? 'h-60 w-60' : status == 'hold-in' ? 'h-60 w-60' : status == 'out' ? 'h-0 w-0' : status == 'hold-out' ? 'h-0 w-0' : 'h-0 w-0'} rounded-full border border-white transition-all duration-[4000ms]`}
+            className={`absolute left-1/2 top-1/2 origin-center translate-x-[-50%] translate-y-[-50%] ${status == 'in' ? 'h-60 w-60' : status == 'hold-in' ? 'h-60 w-60' : status == 'out' ? 'h-0 w-0' : status == 'hold-out' ? 'h-0 w-0' : 'h-0 w-0'} duration-[4000ms] rounded-full border border-white transition-all`}
           ></div>
         </div>
       </div>
