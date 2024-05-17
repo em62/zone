@@ -39,7 +39,7 @@ export default function PrepairFirst() {
             {status && <Badge>{status == 'in' ? '吸って' : status == 'hold-in' ? '止めて' : status == 'out' ? '吐いて' : status == 'hold-out' ? '止めて' : ''}</Badge>}
           </div>
           <div
-            className={`absolute left-1/2 top-1/2 origin-center translate-x-[-50%] translate-y-[-50%] ${status == 'in' ? 'h-60 w-60 opacity-100' : status == 'hold-in' ? 'h-60 w-60 opacity-100' : status == 'out' ? 'h-0 w-0 opacity-0' : status == 'hold-out' ? 'h-0 w-0 opacity-0' : 'h-0 w-0 opacity-0'} duration-4000 rounded-full border border-primary transition-all dark:border-white`}
+            className={`absolute left-1/2 top-1/2 origin-center translate-x-[-50%] translate-y-[-50%] ${status == 'in' ? 'h-60 w-60 opacity-100' : status == 'hold-in' ? 'h-60 w-60 opacity-100' : status == 'out' ? 'h-0 w-0 opacity-0' : status == 'hold-out' ? 'h-0 w-0 opacity-0' : 'h-0 w-0 opacity-0'} rounded-full border border-primary transition-all duration-4000 dark:border-white`}
           ></div>
         </div>
       </div>
