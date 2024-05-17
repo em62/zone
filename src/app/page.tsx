@@ -2,6 +2,7 @@ import { Suspense } from 'react'
 import { createClient } from '@/utils/supabase/server'
 import Account from '@/components/account'
 import { ButtonGroup } from '@/components/button-group'
+import { ModeToggle } from '@/components/mode-toggle'
 
 export default async function Home() {
   const supabase = createClient()
@@ -11,10 +12,11 @@ export default async function Home() {
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-between">
-      <div className="mt-4 flex h-10 w-full items-center justify-end px-4">
+      <div className="mt-4 flex h-10 w-full items-center justify-between px-4">
         <Suspense fallback={<p>waiting for ...</p>}>
           <Account />
         </Suspense>
+        <ModeToggle />
       </div>
       <h1 className="text-4xl font-semibold">ZONE</h1>
       <div className="mb-8 flex items-center gap-x-4">
