@@ -13,7 +13,7 @@ export default function PrepairFirst() {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    if (round <= 4) {
+    if (round <= 1) {
       // 40
       const intervalId = setInterval(() => {
         setCount(count + 1)

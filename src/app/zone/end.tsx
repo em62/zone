@@ -1,6 +1,6 @@
 'use client'
 
-import { Button } from '@/components/button'
+import { Button } from '@/components/ui/button'
 import { useAppSelector } from '@/lib/hooks'
 import { createClient } from '@/utils/supabase/client'
 import { format } from 'date-fns'
@@ -26,11 +26,11 @@ export default function End() {
     <div className="flex min-h-screen flex-col items-center justify-center">
       <div className="text-2xl font-bold">Well done!!</div>
       {user ? (
-        <Link href="/">
-          <Button onClick={handleClick}>back to top</Button>
-        </Link>
+        <Button asChild onClick={handleClick}>
+          <Link href="/">レコードに追加してホームに戻る</Link>
+        </Button>
       ) : (
-        <Button>
+        <Button asChild>
           <Link href="/">back to top</Link>
         </Button>
       )}

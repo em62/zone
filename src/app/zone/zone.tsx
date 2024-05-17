@@ -1,6 +1,6 @@
 'use client'
 
-import { Button } from '@/components/button'
+import { Button } from '@/components/ui/button'
 import { update } from '@/lib/features/currentPage/currentPageSlice'
 import { useAppDispatch } from '@/lib/hooks'
 import { useEffect, useState } from 'react'
@@ -46,21 +46,11 @@ export default function ZonePage() {
         <div className="text-4xl font-semibold">
           {Math.floor(count / 60)}:{(count % 60).toString().padStart(2, '0')}
         </div>
-        {!run && (
-          <div className="absolute bottom-0 mb-10 flex text-sm text-gray-500">
-            <div>
-              <Button onClick={handleStart}>start</Button>
-            </div>
-            <div>
-              <Button onClick={handleReset}>reset</Button>
-            </div>
-          </div>
-        )}
-        {run && (
-          <div className="absolute bottom-0 mb-10 text-sm text-gray-500">
-            <Button onClick={handleStop}>stop</Button>
-          </div>
-        )}
+        <div className="absolute bottom-0 mb-10 flex gap-x-4 text-sm text-gray-500">
+          {!run && <Button onClick={handleStart}>start</Button>}
+          {!run && count < initialCount && <Button onClick={handleReset}>reset</Button>}
+          {run && <Button onClick={handleStop}>stop</Button>}
+        </div>
       </div>
     </>
   )
