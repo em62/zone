@@ -9,7 +9,7 @@ export const ButtonGroup = ({ user }: { user: User | null }) => {
         <Link href="/zone">Get in the ZONE</Link>
       </Button>
       {user && (
-        <Button asChild>
+        <Button asChild variant="outline">
           <Link href="/record">Record</Link>
         </Button>
       )}
