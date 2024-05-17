@@ -3,6 +3,7 @@
 import { User } from '@supabase/supabase-js'
 import { cache, useEffect, useState } from 'react'
 import { createClient } from '@/utils/supabase/client'
+import { Badge } from '@/components/ui/badge'
 
 export default function Record({ user }: { user: User }) {
   const [items, setItems] = useState<any>([])
@@ -25,8 +26,8 @@ export default function Record({ user }: { user: User }) {
   return (
     <>
       <div className="mt-6 flex gap-x-4">
-        <div className="rounded bg-[#202020] px-2 py-1 text-xs font-bold">Total {items.length} Times</div>
-        <div className="rounded bg-[#202020] px-2 py-1 text-xs font-bold">Today {todayTimes} Times</div>
+        <Badge variant="secondary">Total {items.length} Times</Badge>
+        <Badge variant="secondary">Today {todayTimes} Times</Badge>
       </div>
       <div className="mt-6 border border-[#2F2F2F]"></div>
       <div className="mt-6">
