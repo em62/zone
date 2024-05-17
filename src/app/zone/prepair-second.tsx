@@ -23,9 +23,9 @@ export default function PrepairSecond() {
   return (
     <>
       <div className="flex min-h-screen flex-col items-center justify-center">
-        <div className="absolute top-0 mt-10 text-sm text-gray-500">本を見つめましょう</div>
-        <div className="text-4xl">🌲</div>
-        <div className="absolute bottom-5 right-5 text-sm text-gray-500">{count}</div>
+        <div className="absolute top-0 mt-10 text-sm text-muted-foreground">木を見つめましょう</div>
+        <div className="text-6xl">🌲</div>
+        <div className="absolute bottom-5 right-5 text-sm text-muted-foreground">{count}</div>
       </div>
     </>
   )
