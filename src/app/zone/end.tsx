@@ -24,14 +24,14 @@ export default function End() {
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center">
-      <div className="text-2xl font-bold">Well done!!</div>
+      <div className="mb-6 text-2xl font-bold">Well done!!</div>
       {user ? (
         <Button asChild onClick={handleClick}>
-          <Link href="/">レコードに追加してホームに戻る</Link>
+          <Link href="/">Back to Home</Link>
         </Button>
       ) : (
         <Button asChild>
-          <Link href="/">back to top</Link>
+          <Link href="/">Back to Home</Link>
         </Button>
       )}
     </div>

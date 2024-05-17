@@ -42,9 +42,12 @@ export default function ZonePage() {
   return (
     <>
       <div className="flex min-h-screen items-center justify-center">
-        <div className="absolute top-0 mt-10 text-sm text-gray-500">focus</div>
+        <div className="absolute top-0 mt-10 text-sm text-muted-foreground">ZONEに入りましょう</div>
         <div className="text-4xl font-semibold">
-          {Math.floor(count / 60)}:{(count % 60).toString().padStart(2, '0')}
+          {Math.floor(count / 60)
+            .toString()
+            .padStart(2, '0')}
+          :{(count % 60).toString().padStart(2, '0')}
         </div>
         <div className="absolute bottom-0 mb-10 flex gap-x-4 text-sm text-gray-500">
           {!run && <Button onClick={handleStart}>start</Button>}

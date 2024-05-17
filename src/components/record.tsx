@@ -25,14 +25,13 @@ export default function Record({ user }: { user: User }) {
 
   return (
     <>
-      <div className="mt-6 flex gap-x-4">
+      <div className="mt-6 flex gap-x-4 border-b border-[#e4e4e7] pb-6 dark:border-[#27272a]">
         <Badge variant="secondary">Total {items.length} Times</Badge>
         <Badge variant="secondary">Today {todayTimes} Times</Badge>
       </div>
-      <div className="mt-6 border border-[#2F2F2F]"></div>
       <div className="mt-6">
         {items?.length > 0 ? (
-          <ul className="flex flex-col divide-y divide-[#2F2F2F] rounded border border-[#2F2F2F]">
+          <ul className="flex flex-col divide-y divide-[#e4e4e7] rounded border border-[#e4e4e7] dark:divide-[#27272a] dark:border-[#27272a]">
             {items?.map((item: any) => {
               const timestamp = item.created_at
               const date = new Date(timestamp)
@@ -45,13 +44,13 @@ export default function Record({ user }: { user: User }) {
                 <li key={item.id} className="flex justify-between px-4 py-4">
                   {d == formattedDate(new Date()) ? (
                     <>
-                      <div className="text-sm text-white">{d}</div>
-                      <p className="text-sm text-white">{formattedTime}</p>
+                      <div className="text-sm">{d}</div>
+                      <p className="text-sm">{formattedTime}</p>
                     </>
                   ) : (
                     <>
-                      <div className="text-sm text-gray-400">{d}</div>
-                      <p className="text-sm text-gray-400">{formattedTime}</p>
+                      <div className="text-sm text-muted-foreground">{d}</div>
+                      <p className="text-sm text-muted-foreground">{formattedTime}</p>
                     </>
                   )}
                 </li>

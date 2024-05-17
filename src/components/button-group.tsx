@@ -6,7 +6,7 @@ export const ButtonGroup = ({ user }: { user: User | null }) => {
   return (
     <>
       <Button asChild>
-        <Link href="/zone">Get in the ZONE</Link>
+        <Link href="/zone">Get Started</Link>
       </Button>
       {user && (
         <Button asChild variant="outline">

@@ -16,19 +16,17 @@ export default async function RecordPage() {
   return (
     <>
       <div className="px-4 py-6">
-        <Link href="/" className="text-sm text-[#a1a1aa]">
+        <Link href="/" className="text-sm text-muted-foreground">
           ← back
         </Link>
         <div className="mt-4">
           <h1 className="text-4xl font-bold">Record</h1>
         </div>
         <div className="mt-2">
-          <p className="text-md text-[#A1A1AA]">
-            A vertically stacked set of
+          <p className="text-md text-muted-foreground">
+            レコードではログイン時にZONEに
             <br />
-            interactive headings that each
-            <br />
-            reveal a section of content.
+            入った記録を確認することができます。
           </p>
         </div>
         <Record user={user} />
