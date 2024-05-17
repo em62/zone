@@ -13,7 +13,7 @@ export default async function Home() {
   return (
     <div className="flex min-h-screen flex-col items-center justify-between">
       <div className="mt-4 flex h-10 w-full items-center justify-between px-4">
-        <Suspense fallback={<p>waiting for ...</p>}>
+        <Suspense fallback={<p>loading...</p>}>
           <Account />
         </Suspense>
         <ModeToggle />
