@@ -43,9 +43,6 @@ export default function Record({ user }: { user: User }) {
             {records?.map((record: Record) => (
               <li key={record.id} className="flex justify-between px-4 py-4">
                 <div className="text-sm text-muted-foreground">{format(record.created_at, 'yyyy-MM-dd HH:mm')}</div>
-                <Link href={`/record/${record.id}`} className="text-sm text-muted-foreground">
-                  more
-                </Link>
               </li>
             ))}
           </ul>
