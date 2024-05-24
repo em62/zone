@@ -14,7 +14,9 @@ export default function Zone() {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    dispatch(update('prepair1'))
+    return () => {
+      dispatch(update('prepair1'))
+    }
   }, [])
 
   return (
