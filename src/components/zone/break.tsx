@@ -4,7 +4,8 @@ import { update } from '@/lib/features/currentPage/currentPageSlice'
 import { useAppDispatch } from '@/lib/hooks'
 import { useEffect, useState } from 'react'
 
-const initialCount = 10 * 60
+// const initialCount = 10 * 60
+const initialCount = 1
 
 export default function BreakPage() {
   const [count, setCount] = useState(initialCount)
@@ -20,7 +21,7 @@ export default function BreakPage() {
     } else {
       dispatch(update('end'))
     }
-  }, [count])
+  }, [count, dispatch])
 
   return (
     <>

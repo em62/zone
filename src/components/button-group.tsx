@@ -1,8 +1,13 @@
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { User } from '@supabase/supabase-js'
+import { createClient } from '@/utils/supabase/server'
 
-export const ButtonGroup = ({ user }: { user: User | null }) => {
+export const ButtonGroup = async () => {
+  const db = createClient()
+  const {
+    data: { user },
+  } = await db.auth.getUser()
+
   return (
     <>
       <Button asChild>
