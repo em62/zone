@@ -1,24 +1,17 @@
-import Record from '@/components/record'
-import { createClient } from '@/utils/supabase/server'
+import { Record } from '@/components/record/record'
+import { Button } from '@/components/ui/button'
 import Link from 'next/link'
-import { redirect } from 'next/navigation'
+import { Suspense } from 'react'
 
-export default async function RecordPage() {
-  const supabase = createClient()
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
-
-  if (!user) {
-    redirect('/')
-  }
-
+export default function RecordPage() {
   return (
     <>
       <div className="px-4 py-6">
-        <Link href="/" className="text-sm text-muted-foreground">
-          ← back
-        </Link>
+        <Button asChild variant="outline">
+          <Link href="/" className="text-sm text-muted-foreground">
+            back
+          </Link>
+        </Button>
         <div className="mt-4">
           <h1 className="text-4xl font-bold">Record</h1>
         </div>
@@ -29,7 +22,9 @@ export default async function RecordPage() {
             入った記録を確認することができます。
           </p>
         </div>
-        <Record user={user} />
+        <Suspense fallback={<p>loading...</p>}>
+          <Record />
+        </Suspense>
       </div>
     </>
   )
