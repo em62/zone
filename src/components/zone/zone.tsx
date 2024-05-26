@@ -5,7 +5,8 @@ import { update } from '@/lib/features/currentPage/currentPageSlice'
 import { useAppDispatch } from '@/lib/hooks'
 import { useEffect, useState } from 'react'
 
-const initialCount = 60 * 50
+// const initialCount = 60 * 50
+const initialCount = 1
 
 export default function ZonePage() {
   const [count, setCount] = useState(initialCount)
@@ -36,7 +37,7 @@ export default function ZonePage() {
     if (count == 0) {
       dispatch(update('break'))
     }
-  }, [count, run])
+  }, [count, dispatch, run])
 
   return (
     <>

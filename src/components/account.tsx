@@ -3,6 +3,9 @@ import { headers } from 'next/headers'
 import Image from 'next/image'
 import { redirect } from 'next/navigation'
 
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
+import { Button } from './ui/button'
+
 export default async function Account() {
   const supabase = createClient()
   const {
@@ -31,16 +34,32 @@ export default async function Account() {
   return (
     <>
       {user ? (
-        <div className="h-10 w-10 overflow-hidden rounded-full">
-          <form action="/auth/signout" method="post">
-            <button>
+        <Dialog>
+          <DialogTrigger>
+            <div className="h-10 w-10 overflow-hidden rounded-full">
               <Image src={user?.user_metadata?.avatar_url} alt="user avatar" width={40} height={40} />
-            </button>
-          </form>
-        </div>
+            </div>
+          </DialogTrigger>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>アカウント情報</DialogTitle>
+              <div className="flex items-center justify-center gap-x-4 pt-4">
+                <div className="h-10 w-10 overflow-hidden rounded-full">
+                  <Image src={user?.user_metadata?.avatar_url} alt="user avatar" width={40} height={40} />
+                </div>
+                <div className="text-muted-foreground">{user.user_metadata.email}</div>
+              </div>
+              <div className="pt-6">
+                <form action="/auth/signout" method="post">
+                  <Button variant="outline">ログアウト</Button>
+                </form>
+              </div>
+            </DialogHeader>
+          </DialogContent>
+        </Dialog>
       ) : (
         <form action={signIn}>
-          <button className="ml-auto">Login</button>
+          <button>Login</button>
         </form>
       )}
     </>

@@ -1,15 +1,14 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { useAppSelector } from '@/lib/hooks'
 import { createClient } from '@/utils/supabase/client'
+import { User } from '@supabase/supabase-js'
 import { format } from 'date-fns'
 import Link from 'next/link'
 import { useEffect } from 'react'
 
-export default function End() {
+export default function End({ user }: { user: User | null }) {
   const supabase = createClient()
-  const user = useAppSelector((state: any) => state.login)
 
   useEffect(() => {
     if (user) {

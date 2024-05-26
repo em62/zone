@@ -14,7 +14,8 @@ export default function PrepairFirst() {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    if (round <= 40) {
+    // if (round <= 40) {
+    if (round <= 1) {
       const intervalId = setInterval(() => {
         setCount(count + 1)
         if (count % 4 == 0) {
@@ -27,7 +28,7 @@ export default function PrepairFirst() {
     } else {
       dispatch(update('prepair2'))
     }
-  }, [count, round])
+  }, [count, dispatch, round])
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center">
