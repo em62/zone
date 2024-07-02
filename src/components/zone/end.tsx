@@ -1,33 +1,31 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { createClient } from '@/utils/supabase/client'
+import { insertRecord } from '@/utils/supabase/actions'
 import { User } from '@supabase/supabase-js'
-import { format } from 'date-fns'
 import Link from 'next/link'
-import { useEffect } from 'react'
+import { useState } from 'react'
 
 export default function End({ user }: { user: User | null }) {
-  const supabase = createClient()
+  const [value, setValue] = useState('')
 
-  useEffect(() => {
-    if (user) {
-      const uploadData = async () => {
-        await supabase.from('record').insert({
-          user_id: user?.id,
-          created_at: format(new Date(), "yyyy-MM-dd'T'HH:mm:ssXXX"),
-        })
-      }
-      uploadData()
-    }
-  })
+  const handleSubmit = () => {
+    insertRecord(value)
+  }
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center">
       <div className="mb-6 text-2xl font-bold">Well done!!</div>
-      <Button asChild>
-        <Link href="/">Back to Home</Link>
-      </Button>
+      {user ? (
+        <form action={handleSubmit}>
+          <textarea value={value} onChange={(e) => setValue(e.target.value)} />
+          <button type="submit">submit</button>
+        </form>
+      ) : (
+        <Button asChild>
+          <Link href="/">Back to Home</Link>
+        </Button>
+      )}
     </div>
   )
 }
