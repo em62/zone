@@ -1,5 +1,6 @@
-import { Record } from '@/components/record/record'
 import { Button } from '@/components/ui/button'
+import { getRecord, getUser } from '@/utils/supabase/actions'
+import { format, toZonedTime } from 'date-fns-tz'
 import Link from 'next/link'
 import { Suspense } from 'react'
 
@@ -15,17 +16,28 @@ export default function RecordPage() {
         <div className="mt-4">
           <h1 className="text-4xl font-bold">Record</h1>
         </div>
-        <div className="mt-2">
-          <p className="text-md text-muted-foreground">
-            レコードではログイン時にZONEに
-            <br />
-            入った記録を確認することができます。
-          </p>
+        <div className="mt-4">
+          <Suspense fallback={<p>loading...</p>}>
+            <Record />
+          </Suspense>
         </div>
-        <Suspense fallback={<p>loading...</p>}>
-          <Record />
-        </Suspense>
       </div>
     </>
+  )
+}
+
+async function Record() {
+  const user = await getUser()
+  const record = await getRecord(user?.id ?? '')
+
+  return (
+    <div className="space-y-4">
+      {record?.map((r) => (
+        <div key={r.id} className="text-sm" style={{ wordBreak: 'break-word' }}>
+          <span className="text-muted-foreground">{format(r.created_at, 'yyyy-MM-dd HH:mm')}: </span>
+          {r.text}
+        </div>
+      ))}
+    </div>
   )
 }
