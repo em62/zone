@@ -34,10 +34,20 @@ async function Record() {
     <div className="space-y-4">
       {record?.map((r) => (
         <div key={r.id} className="text-sm" style={{ wordBreak: 'break-word' }}>
-          <span className="text-muted-foreground">{format(r.created_at, 'yyyy-MM-dd HH:mm')}: </span>
+          <span className="text-muted-foreground">
+            <Timestamp date={r.created_at} />
+          </span>
           {r.text}
         </div>
       ))}
     </div>
   )
+}
+
+function Timestamp({ date }: { date: string }) {
+  const utcDate = new Date(date)
+  const jstDate = new Date(utcDate.getTime() + 9 * 60 * 60 * 1000)
+  const jstTimeString = jstDate.toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' })
+
+  return <>{format(jstTimeString, 'yyyy-MM-dd HH:mm')}: </>
 }
