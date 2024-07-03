@@ -5,8 +5,7 @@ import { update } from '@/lib/features/currentPage/currentPageSlice'
 import { useAppDispatch } from '@/lib/hooks'
 import { useEffect, useState } from 'react'
 
-// const initialCount = 60 * 50
-const initialCount = 1
+const initialCount = 60 * 50
 
 export default function ZonePage() {
   const [count, setCount] = useState(initialCount)
