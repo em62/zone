@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button'
 import { getRecord, getUser } from '@/utils/supabase/actions'
-import { format, toZonedTime } from 'date-fns-tz'
+import { format } from 'date-fns'
 import Link from 'next/link'
 import { Suspense } from 'react'
 
