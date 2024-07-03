@@ -5,8 +5,7 @@ import { useAppDispatch } from '@/lib/hooks'
 import { useEffect, useState } from 'react'
 
 export default function PrepairSecond() {
-  // const [count, setCount] = useState(60)
-  const [count, setCount] = useState(1)
+  const [count, setCount] = useState(60)
   const dispatch = useAppDispatch()
 
   useEffect(() => {
