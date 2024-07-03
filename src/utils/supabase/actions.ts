@@ -23,7 +23,6 @@ export const getRecord = cache(async (id: string) => {
 export const insertRecord = async (text: string) => {
   const db = createClient()
   await db.from('record').insert({
-    created_at: format(new Date(), "yyyy-MM-dd'T'HH:mm:ssXXX"),
     text: text,
   })
 
