@@ -1,32 +1,34 @@
 'use client'
 
-import { useEffect } from 'react'
-import { useAppDispatch, useAppSelector } from '@/lib/hooks'
-import Breathe from '@/components/zone/prepair-first'
+import { User } from '@supabase/supabase-js'
+
+import { DataProvider, useDataContext } from '@/components/context'
+import BreakPage from '@/components/zone/break'
+import Breathe from '@/components/zone/deepbreath'
+import End from '@/components/zone/end'
 import PrepairSecond from '@/components/zone/prepair-second'
 import ZonePage from '@/components/zone/zone'
-import BreakPage from '@/components/zone/break'
-import End from '@/components/zone/end'
-import { User } from '@supabase/supabase-js'
-import { update } from '@/lib/features/currentPage/currentPageSlice'
 
 export const CurrentPhase = ({ user }: { user: User | null }) => {
-  const currentPage = useAppSelector((state: any) => state.currentPage)
-  const dispatch = useAppDispatch()
+  return (
+    <>
+      <DataProvider>
+        <Page user={user} />
+      </DataProvider>
+    </>
+  )
+}
 
-  useEffect(() => {
-    return () => {
-      dispatch(update('prepair1'))
-    }
-  }, [dispatch])
+function Page({ user }: { user: User | null }) {
+  const { phase } = useDataContext()
 
   return (
     <>
-      {currentPage == 'prepair1' && <Breathe />}
-      {currentPage == 'prepair2' && <PrepairSecond />}
-      {currentPage == 'zone' && <ZonePage />}
-      {currentPage == 'break' && <BreakPage />}
-      {currentPage == 'end' && <End user={user} />}
+      {phase == 'prepair1' && <Breathe />}
+      {phase == 'prepair2' && <PrepairSecond />}
+      {phase == 'zone' && <ZonePage />}
+      {phase == 'break' && <BreakPage />}
+      {phase == 'end' && <End user={user} />}
     </>
   )
 }

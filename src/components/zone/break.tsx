@@ -1,14 +1,15 @@
 'use client'
 
-import { update } from '@/lib/features/currentPage/currentPageSlice'
-import { useAppDispatch } from '@/lib/hooks'
 import { useEffect, useState } from 'react'
 
-const initialCount = 10 * 60
+import { useDataContext } from '@/components/context'
+
+// const initialCount = 10 * 60
+const initialCount = 1
 
 export default function BreakPage() {
   const [count, setCount] = useState(initialCount)
-  const dispatch = useAppDispatch()
+  const { setPhase } = useDataContext()
 
   useEffect(() => {
     if (count > 0) {
@@ -18,9 +19,9 @@ export default function BreakPage() {
 
       return () => clearInterval(intervalId)
     } else {
-      dispatch(update('end'))
+      setPhase('end')
     }
-  }, [count, dispatch])
+  }, [count])
 
   return (
     <>

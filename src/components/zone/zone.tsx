@@ -1,16 +1,17 @@
 'use client'
 
-import { Button } from '@/components/ui/button'
-import { update } from '@/lib/features/currentPage/currentPageSlice'
-import { useAppDispatch } from '@/lib/hooks'
 import { useEffect, useState } from 'react'
 
-const initialCount = 60 * 50
+import { useDataContext } from '@/components/context'
+import { Button } from '@/components/ui/button'
+
+// const initialCount = 60 * 50
+const initialCount = 1
 
 export default function ZonePage() {
   const [count, setCount] = useState(initialCount)
   const [run, setRun] = useState(false)
-  const dispatch = useAppDispatch()
+  const { setPhase } = useDataContext()
 
   const handleStart = () => {
     setRun(true)
@@ -34,9 +35,9 @@ export default function ZonePage() {
     }
 
     if (count == 0) {
-      dispatch(update('break'))
+      setPhase('break')
     }
-  }, [count, dispatch, run])
+  }, [count, run])
 
   return (
     <>
