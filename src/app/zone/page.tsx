@@ -1,11 +1,8 @@
 import { CurrentPhase } from '@/components/zone/phase'
-import { createClient } from '@/utils/supabase/server'
+import { getUser } from '@/db/actions'
 
-export default async function Zone() {
-  const db = createClient()
-  const {
-    data: { user },
-  } = await db.auth.getUser()
+export default async function Page() {
+  const user = await getUser()
 
   return <CurrentPhase user={user} />
 }
