@@ -1,34 +1,11 @@
 import Image from 'next/image'
-import { headers } from 'next/headers'
-import { redirect } from 'next/navigation'
-import { createClient } from '@/utils/supabase/server'
+
 import { Button } from '@/components/ui/button'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
+import { getUser, signIn } from '@/db/actions'
 
-export const Auth = async () => {
-  const db = createClient()
-  const {
-    data: { user },
-  } = await db.auth.getUser()
-
-  const signIn = async () => {
-    'use server'
-    const db = createClient()
-    const origin = headers().get('origin')
-
-    const { data, error } = await db.auth.signInWithOAuth({
-      provider: 'google',
-      options: {
-        redirectTo: `${origin}/auth/callback`,
-      },
-    })
-
-    if (error) {
-      console.error(error)
-    } else {
-      return redirect(data.url)
-    }
-  }
+export const Account = async () => {
+  const user = await getUser()
 
   return (
     <>
@@ -50,7 +27,7 @@ export const Auth = async () => {
               </div>
               <div className="pt-6">
                 <form action="/auth/signout" method="post">
-                  <Button variant="outline">ログアウト</Button>
+                  <Button variant="outline">signout</Button>
                 </form>
               </div>
             </DialogHeader>
@@ -58,7 +35,7 @@ export const Auth = async () => {
         </Dialog>
       ) : (
         <form action={signIn}>
-          <button>Login</button>
+          <button>Sign In</button>
         </form>
       )}
     </>

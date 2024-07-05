@@ -1,20 +1,20 @@
 'use client'
 
 import { Badge } from '@/components/ui/badge'
-import { update } from '@/lib/features/currentPage/currentPageSlice'
-import { useAppDispatch } from '@/lib/hooks'
 import { useEffect, useState } from 'react'
+import { useDataContext } from '../context'
 
 const arr = ['in', 'hold-in', 'out', 'hold-out']
 
-export default function PrepairFirst() {
+export default function Deepbreath() {
   const [count, setCount] = useState(0)
   const [round, setRound] = useState(0)
   const [status, setStatus] = useState('')
-  const dispatch = useAppDispatch()
+  const { setPhase } = useDataContext()
 
   useEffect(() => {
-    if (round <= 40) {
+    // if (round <= 40) {
+    if (round <= 1) {
       const intervalId = setInterval(() => {
         setCount(count + 1)
         if (count % 4 == 0) {
@@ -25,9 +25,9 @@ export default function PrepairFirst() {
 
       return () => clearInterval(intervalId)
     } else {
-      dispatch(update('prepair2'))
+      setPhase('prepair2')
     }
-  }, [count, dispatch, round])
+  }, [count, round])
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center">

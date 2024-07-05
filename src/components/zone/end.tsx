@@ -1,10 +1,13 @@
 'use client'
 
-import { Button } from '@/components/ui/button'
-import { insertRecord } from '@/utils/supabase/actions'
-import { User } from '@supabase/supabase-js'
-import Link from 'next/link'
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
+
+import { User } from '@supabase/supabase-js'
+
+import { Button } from '@/components/ui/button'
+import { Textarea } from '@/components/ui/textarea'
+import { insertRecord } from '@/db/actions'
 
 export default function End({ user }: { user: User | null }) {
   const [value, setValue] = useState('')
@@ -24,20 +27,26 @@ export default function End({ user }: { user: User | null }) {
   }, [value])
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center">
-      <div className="mb-6 text-2xl font-bold">Well done!!</div>
+    <div className="mx-auto max-w-2xl px-4">
+      <div className="flex h-14 justify-center py-4 text-sm text-muted-foreground">終了</div>
       {user ? (
-        <div className="flex flex-col space-y-4">
-          <textarea value={value} placeholder="テキストを入力してください..." className="text-md p-4" onChange={(e) => setValue(e.target.value)} />
-          <Button type="button" disabled={disabled} variant="default" onClick={handleSubmit}>
-            レコードに追加してホームに戻る
-          </Button>
-          <Button asChild>
-            <Link href="/">ホームに戻る</Link>
-          </Button>
-        </div>
+        <>
+          <div>
+            <Textarea value={value} placeholder="テキストを入力してください..." className="text-md p-4" onChange={(e) => setValue(e.target.value)} />
+          </div>
+          <div>
+            <Button type="button" disabled={disabled} size="sm" variant="default" onClick={handleSubmit}>
+              レコードに追加してホームに戻る
+            </Button>
+          </div>
+          <div>
+            <Button asChild size="sm">
+              <Link href="/">ホームに戻る</Link>
+            </Button>
+          </div>
+        </>
       ) : (
-        <Button asChild>
+        <Button asChild size="sm">
           <Link href="/">ホームに戻る</Link>
         </Button>
       )}
