@@ -1,18 +1,19 @@
-import { Button } from '@/components/ui/button'
-import { getRecord, getUser } from '@/utils/supabase/actions'
-import { format } from 'date-fns'
-import Link from 'next/link'
 import { Suspense } from 'react'
+import Link from 'next/link'
+
+import { format } from 'date-fns'
+import { ArrowLeft } from 'lucide-react'
+
+import { getRecord, getUser } from '@/db/actions'
 
 export default function RecordPage() {
   return (
     <>
       <div className="px-4 py-6">
-        <Button asChild variant="outline">
-          <Link href="/" className="text-sm text-muted-foreground">
-            back
-          </Link>
-        </Button>
+        <Link href="/" className="inline-flex items-center gap-x-1">
+          <ArrowLeft className="h-5 w-5" />
+          Back
+        </Link>
         <div className="mt-4">
           <h1 className="text-4xl font-bold">Record</h1>
         </div>
@@ -28,20 +29,29 @@ export default function RecordPage() {
 
 async function Record() {
   const user = await getUser()
+
+  if (!user) {
+    return <p className="leading-7 [&:not(:first-child)]:mt-6">データを表示するにはログインしてください</p>
+  }
+
   const record = await getRecord(user?.id ?? '')
 
-  return (
-    <div className="space-y-4">
-      {record?.map((r) => (
-        <div key={r.id} className="text-sm" style={{ wordBreak: 'break-word' }}>
-          <span className="text-muted-foreground">
-            <Timestamp date={r.created_at} />
-          </span>
-          {r.text}
-        </div>
-      ))}
-    </div>
-  )
+  if (!record) {
+    return <p className="leading-7 [&:not(:first-child)]:mt-6">データがまだありません。</p>
+  } else {
+    return (
+      <div className="space-y-4">
+        {record?.map((r) => (
+          <div key={r.id} className="text-sm" style={{ wordBreak: 'break-word' }}>
+            <span className="text-muted-foreground">
+              <Timestamp date={r.created_at} />
+            </span>
+            {r.text}
+          </div>
+        ))}
+      </div>
+    )
+  }
 }
 
 function Timestamp({ date }: { date: string }) {
