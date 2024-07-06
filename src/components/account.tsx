@@ -11,10 +11,12 @@ export const Account = async () => {
     <>
       {user ? (
         <Dialog>
-          <DialogTrigger>
-            <div className="h-10 w-10 overflow-hidden rounded-full">
-              <Image src={user?.user_metadata?.avatar_url} alt="user avatar" width={40} height={40} />
-            </div>
+          <DialogTrigger asChild>
+            <Button variant="ghost" size="icon">
+              <div className="h-[1.2rem] w-[1.2rem] overflow-hidden rounded-full">
+                <Image src={user?.user_metadata?.avatar_url} alt="user avatar" width={40} height={40} />
+              </div>
+            </Button>
           </DialogTrigger>
           <DialogContent>
             <DialogHeader>
