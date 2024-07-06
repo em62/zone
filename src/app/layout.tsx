@@ -4,6 +4,10 @@ import { Inter } from 'next/font/google'
 
 import { ThemeProvider } from '@/components/theme-provider'
 import { Toaster } from '@/components/ui/sonner'
+import { Suspense } from 'react'
+
+import { Account } from '@/components/account'
+import { ModeToggle } from '@/components/mode-toggle'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -21,6 +25,14 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          <div className="mx-auto mt-4 flex h-10 w-full max-w-2xl items-center justify-end px-4">
+            <div>
+              <Suspense fallback={<>loading...</>}>
+                <Account />
+              </Suspense>
+              <ModeToggle />
+            </div>
+          </div>
           {children}
           <Toaster />
         </ThemeProvider>
