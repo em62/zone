@@ -26,12 +26,10 @@ export default function RootLayout({
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <div className="mx-auto mt-4 flex h-10 w-full max-w-2xl items-center justify-end px-4">
-            <div>
-              <Suspense fallback={<>loading...</>}>
-                <Account />
-              </Suspense>
-              <ModeToggle />
-            </div>
+            <Suspense fallback={<>loading...</>}>
+              <Account />
+            </Suspense>
+            <ModeToggle />
           </div>
           {children}
           <Toaster />
