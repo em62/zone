@@ -57,14 +57,6 @@ async function Record() {
 function Timestamp({ date }: { date: string }) {
   const utcDate = new Date(date)
   const jstDate = new Date(utcDate.getTime() + 9 * 60 * 60 * 1000)
-  const jstTimeString = jstDate.toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' })
 
-  return (
-    <>
-      <div>jstDate:{format(jstDate, 'yyyy-MM-dd HH:mm')}</div>
-      <div>jstTimeString:{format(jstTimeString, 'yyyy-MM-dd HH:mm')}</div>
-      <div>utcDate:{format(utcDate, 'yyyy-MM-dd HH:mm')}</div>
-      <div>date:{format(date, 'yyyy-MM-dd HH:mm')}</div>
-    </>
-  )
+  return <>{format(jstDate, 'yyyy-MM-dd HH:mm')}: </>
 }
