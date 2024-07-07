@@ -4,8 +4,7 @@ import { useEffect, useState } from 'react'
 
 import { useDataContext } from '@/components/context'
 
-// const initialCount = 10 * 60
-const initialCount = 1
+const initialCount = 10 * 60
 
 export default function BreakPage() {
   const [count, setCount] = useState(initialCount)

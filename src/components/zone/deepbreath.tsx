@@ -13,8 +13,7 @@ export default function Deepbreath() {
   const { setPhase } = useDataContext()
 
   useEffect(() => {
-    // if (round <= 40) {
-    if (round <= 1) {
+    if (round <= 40) {
       const intervalId = setInterval(() => {
         setCount(count + 1)
         if (count % 4 == 0) {
