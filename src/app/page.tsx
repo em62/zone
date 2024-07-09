@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <>
       <section className="mx-auto flex flex-col items-start gap-2 px-4 py-8 md:py-12 md:pb-8 lg:py-12 lg:pb-10">
-        <a className="group inline-flex items-center px-0.5 text-sm font-medium" href="/docs/components/chart">
+        <a className="group inline-flex items-center px-0.5 text-sm font-medium" href="https://github.com/misdh/zone">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -35,18 +35,12 @@ export default function Home() {
         <h1 className="text-3xl font-bold leading-tight tracking-tighter md:text-4xl lg:leading-[1.1]">The best learning environment</h1>
         <p className="max-w-2xl text-lg font-light text-foreground">Creating an environment is important for concentrating on learning. </p>
         <div className="flex w-full items-center justify-start gap-2 py-2">
-          <Link
-            className="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-md bg-primary px-3 text-xs font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-            href="/zone"
-          >
-            Get Started
-          </Link>
-          <Link
-            className="inline-flex h-8 items-center justify-center whitespace-nowrap rounded-md px-3 text-xs font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-            href="/record"
-          >
-            Record
-          </Link>
+          <Button size="sm" asChild>
+            <Link href="/zone">Get Started</Link>
+          </Button>
+          <Button size="sm" variant="outline" asChild>
+            <Link href="/record">Record</Link>
+          </Button>
         </div>
       </section>
     </>

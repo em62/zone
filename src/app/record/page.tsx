@@ -9,20 +9,16 @@ import { getRecord, getUser } from '@/db/actions'
 export default function RecordPage() {
   return (
     <>
-      <div className="px-4 py-6">
-        <Link href="/" className="inline-flex items-center gap-x-1">
-          <ArrowLeft className="h-5 w-5" />
+      <section className="mx-auto flex flex-col items-start gap-2 px-4 py-8 md:py-12 md:pb-8 lg:py-12 lg:pb-10">
+        <Link href="/" className="flex items-center gap-x-1 text-sm">
+          <ArrowLeft className="h-4 w-4" />
           Back
         </Link>
-        <div className="mt-4">
-          <h1 className="text-4xl font-bold">Record</h1>
-        </div>
-        <div className="mt-4">
-          <Suspense fallback={<p>loading...</p>}>
-            <Record />
-          </Suspense>
-        </div>
-      </div>
+        <h1 className="text-3xl font-bold leading-tight tracking-tighter md:text-4xl lg:leading-[1.1]">Record</h1>
+        <Suspense fallback={<p>loading...</p>}>
+          <Record />
+        </Suspense>
+      </section>
     </>
   )
 }
@@ -36,11 +32,11 @@ async function Record() {
 
   const record = await getRecord(user?.id ?? '')
 
-  if (!record) {
-    return <p className="leading-7 [&:not(:first-child)]:mt-6">データがまだありません。</p>
+  if (record?.length == 0) {
+    return <p className="leading-7 [&:not(:first-child)]:mt-6">データがありません。</p>
   } else {
     return (
-      <div className="space-y-4">
+      <div className="space-y-2">
         {record?.map((r) => (
           <div key={r.id} className="text-sm" style={{ wordBreak: 'break-word' }}>
             <span className="text-muted-foreground">
