@@ -35,7 +35,7 @@ export const getUser = cache(async () => {
 
 export const getRecord = cache(async (id: string) => {
   const db = createClient()
-  const { data } = await db.from('record').select().eq('user_id', id).order('created_at', { ascending: false })
+  const { data } = await db.from('records').select().eq('user_id', id).order('created_at', { ascending: false })
   return data
 })
 

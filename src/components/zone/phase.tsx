@@ -9,17 +9,17 @@ import End from '@/components/zone/end'
 import PrepairSecond from '@/components/zone/prepair-second'
 import ZonePage from '@/components/zone/zone'
 
-export const CurrentPhase = ({ user }: { user: User | null }) => {
+export const CurrentPhase = () => {
   return (
     <>
       <DataProvider>
-        <Page user={user} />
+        <Page />
       </DataProvider>
     </>
   )
 }
 
-function Page({ user }: { user: User | null }) {
+function Page() {
   const { phase } = useDataContext()
 
   return (
@@ -28,7 +28,7 @@ function Page({ user }: { user: User | null }) {
       {phase == 'prepair2' && <PrepairSecond />}
       {phase == 'zone' && <ZonePage />}
       {phase == 'break' && <BreakPage />}
-      {phase == 'end' && <End user={user} />}
+      {phase == 'end' && <End />}
     </>
   )
 }

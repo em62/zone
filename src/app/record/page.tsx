@@ -5,6 +5,7 @@ import { format } from 'date-fns'
 import { ArrowLeft } from 'lucide-react'
 
 import { getRecord, getUser } from '@/db/actions'
+import { Record } from '@/type/record'
 
 export default function RecordPage() {
   return (
@@ -16,38 +17,38 @@ export default function RecordPage() {
         </Link>
         <h1 className="text-3xl font-bold leading-tight tracking-tighter md:text-4xl lg:leading-[1.1]">Record</h1>
         <Suspense fallback={<p>loading...</p>}>
-          <Record />
+          <Records />
         </Suspense>
       </section>
     </>
   )
 }
 
-async function Record() {
+async function Records() {
   const user = await getUser()
 
   if (!user) {
     return <p className="leading-7 [&:not(:first-child)]:mt-6">データを表示するにはログインしてください</p>
   }
 
-  const record = await getRecord(user?.id ?? '')
+  const records = await getRecord(user?.id)
 
-  if (record?.length == 0) {
+  if (records?.length == 0) {
     return <p className="leading-7 [&:not(:first-child)]:mt-6">データがありません。</p>
-  } else {
-    return (
-      <div className="space-y-2">
-        {record?.map((r) => (
-          <div key={r.id} className="text-sm" style={{ wordBreak: 'break-word' }}>
-            <span className="text-muted-foreground">
-              <Timestamp date={r.created_at} />
-            </span>
-            {r.text}
-          </div>
-        ))}
-      </div>
-    )
   }
+
+  return (
+    <div className="space-y-2">
+      {records?.map((record: Record) => (
+        <div key={record.id} className="text-sm" style={{ wordBreak: 'break-word' }}>
+          <span className="text-muted-foreground">
+            <Timestamp date={record.created_at} />
+          </span>
+          {record.text}
+        </div>
+      ))}
+    </div>
+  )
 }
 
 function Timestamp({ date }: { date: string }) {

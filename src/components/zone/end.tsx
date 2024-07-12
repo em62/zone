@@ -7,16 +7,17 @@ import { User } from '@supabase/supabase-js'
 
 import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
-import { insertRecord } from '@/db/actions'
+import { getUser, insertRecord } from '@/db/actions'
 import { Check, Loader2 } from 'lucide-react'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { toast } from 'sonner'
 
-export default function End({ user }: { user: User | null }) {
+export default function End() {
   const [value, setValue] = useState('')
   const [disabled, setDisabled] = useState(true)
   const [loading, setLoading] = useState(false)
   const [updated, setUpdated] = useState(false)
+  const [user, setUser] = useState<User | null>(null)
 
   const handleSubmit = async () => {
     setDisabled(true)
@@ -45,6 +46,14 @@ export default function End({ user }: { user: User | null }) {
       setDisabled(true)
     }
   }, [value])
+
+  useEffect(() => {
+    const userSetting = async () => {
+      const data = await getUser()
+      setUser(data)
+    }
+    userSetting()
+  }, [])
 
   return (
     <div className="mx-auto max-w-2xl px-4">
