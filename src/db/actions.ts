@@ -41,7 +41,7 @@ export const getRecord = cache(async (id: string) => {
 
 export const insertRecord = async (text: string) => {
   const db = createClient()
-  const { error } = await db.from('record').insert({
+  const { error } = await db.from('records').insert({
     text: text,
   })
 
