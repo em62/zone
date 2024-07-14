@@ -45,6 +45,8 @@ async function Records() {
             <Timestamp date={record.created_at} />
           </span>
           {record.text}
+          <div>{record.created_at}</div>
+          <div>{new Date().toUTCString()}</div>
         </div>
       ))}
     </div>
@@ -52,21 +54,21 @@ async function Records() {
 }
 
 function Timestamp({ date }: { date: string }) {
-  const utcDate = new Date(date)
-  const jstDate = new Date(utcDate.getTime() + 9 * 60 * 60 * 1000)
-  const ago = daysAgo(format(jstDate, 'yyyy-MM-dd HH:mm:ss'))
+  const ago = daysAgo(date)
 
   return <>{ago}: </>
 }
 
 function daysAgo(date: string) {
-  const utcString = new Date().toUTCString()
-  const utcDate = new Date(utcString)
-  const jstDate = new Date(utcDate.getTime() + 9 * 60 * 60 * 1000)
+  const now = new Date() // location
+  const utcNow = new Date(now.toUTCString())
+  console.log('any: ', now)
+  console.log('utc: ', utcNow)
 
-  const givenDate = new Date(date)
+  const givenDate = new Date(date) // utc
+  console.log('given: ', givenDate)
   // 差をミリ秒単位で計算
-  const differenceInTime = jstDate.getTime() - givenDate.getTime()
+  const differenceInTime = utcNow.getTime() - givenDate.getTime()
 
   // 差を日単位に変換
   const differenceInDays = Math.floor(differenceInTime / (1000 * 3600 * 24))
