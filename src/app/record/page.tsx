@@ -38,7 +38,7 @@ async function Records() {
   }
 
   return (
-    <div className="space-y-2">
+    <div className="space-y-4">
       {records?.map((record: Record) => (
         <div key={record.id} className="text-sm" style={{ wordBreak: 'break-word' }}>
           <span className="text-muted-foreground">
@@ -54,6 +54,39 @@ async function Records() {
 function Timestamp({ date }: { date: string }) {
   const utcDate = new Date(date)
   const jstDate = new Date(utcDate.getTime() + 9 * 60 * 60 * 1000)
+  const ago = daysAgo(format(jstDate, 'yyyy-MM-dd HH:mm:ss'))
 
-  return <>{format(jstDate, 'yyyy-MM-dd HH:mm')}: </>
+  return <>{ago}: </>
+}
+
+function daysAgo(date: string) {
+  const now = new Date()
+  const givenDate = new Date(date)
+  // 差をミリ秒単位で計算
+  const differenceInTime = now.getTime() - givenDate.getTime()
+
+  // 差を日単位に変換
+  const differenceInDays = Math.floor(differenceInTime / (1000 * 3600 * 24))
+
+  if (differenceInDays === 0) {
+    // 差を時間単位に変換
+    const differenceInHours = Math.floor(differenceInTime / (1000 * 3600))
+
+    if (differenceInHours === 0) {
+      // 差を分単位に変換
+      const differenceInMinutes = Math.floor(differenceInTime / (1000 * 60))
+
+      if (differenceInMinutes === 0) {
+        // 差を秒単位に変換
+        const differenceInSeconds = Math.floor(differenceInTime / 1000)
+        return `${differenceInSeconds}秒前`
+      } else {
+        return `${differenceInMinutes}分前`
+      }
+    } else {
+      return `${differenceInHours}時間前`
+    }
+  } else {
+    return `${differenceInDays}日前`
+  }
 }
