@@ -5,7 +5,8 @@ import { useEffect, useState } from 'react'
 import { useDataContext } from '@/components/context'
 
 export default function PrepairSecond() {
-  const [count, setCount] = useState(60)
+  // const [count, setCount] = useState(60)
+  const [count, setCount] = useState(1)
   const { setPhase } = useDataContext()
 
   useEffect(() => {
