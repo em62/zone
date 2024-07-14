@@ -50,33 +50,21 @@ async function Records() {
   )
 }
 
-function Timestamp({ date }: { date: string }) {
-  const ago = daysAgo(date)
-
-  return <>{ago}: </>
-}
-
 function daysAgo(date: string) {
   const now = new Date()
   const parts: any = date.split(/[-T:.]/)
   const givenDate = new Date(Date.UTC(parts[0], parts[1] - 1, parts[2], parts[3], parts[4], parts[5], parts[6]))
 
-  // 差をミリ秒単位で計算
   const differenceInTime = now.getTime() - givenDate.getTime()
-
-  // 差を日単位に変換
   const differenceInDays = Math.floor(differenceInTime / (1000 * 3600 * 24))
 
   if (differenceInDays === 0) {
-    // 差を時間単位に変換
     const differenceInHours = Math.floor(differenceInTime / (1000 * 3600))
 
     if (differenceInHours === 0) {
-      // 差を分単位に変換
       const differenceInMinutes = Math.floor(differenceInTime / (1000 * 60))
 
       if (differenceInMinutes === 0) {
-        // 差を秒単位に変換
         const differenceInSeconds = Math.floor(differenceInTime / 1000)
         return `${differenceInSeconds}秒前`
       } else {
