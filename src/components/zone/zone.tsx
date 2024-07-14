@@ -5,7 +5,8 @@ import { useEffect, useState } from 'react'
 import { useDataContext } from '@/components/context'
 import { Button } from '@/components/ui/button'
 
-const initialCount = 60 * 50
+// const initialCount = 60 * 50
+const initialCount = 1
 
 export default function ZonePage() {
   const [count, setCount] = useState(initialCount)
