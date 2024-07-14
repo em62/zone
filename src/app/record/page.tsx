@@ -1,7 +1,6 @@
 import { Suspense } from 'react'
 import Link from 'next/link'
 
-import { format } from 'date-fns'
 import { ArrowLeft } from 'lucide-react'
 
 import { getRecord, getUser } from '@/db/actions'
@@ -42,11 +41,9 @@ async function Records() {
       {records?.map((record: Record) => (
         <div key={record.id} className="text-sm" style={{ wordBreak: 'break-word' }}>
           <span className="text-muted-foreground">
-            <Timestamp date={record.created_at} />
+            <>{daysAgo(record.created_at)}: </>
           </span>
           {record.text}
-          <div>{record.created_at}</div>
-          <div>{new Date().toUTCString()}</div>
         </div>
       ))}
     </div>
