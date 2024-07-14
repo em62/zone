@@ -60,10 +60,11 @@ function Timestamp({ date }: { date: string }) {
 }
 
 function daysAgo(date: string) {
-  const now = new Date()
+  const now = new Date().toUTCString()
+  const utcNow = new Date(now)
   const givenDate = new Date(date)
   // 差をミリ秒単位で計算
-  const differenceInTime = now.getTime() - givenDate.getTime()
+  const differenceInTime = utcNow.getTime() - givenDate.getTime()
 
   // 差を日単位に変換
   const differenceInDays = Math.floor(differenceInTime / (1000 * 3600 * 24))
