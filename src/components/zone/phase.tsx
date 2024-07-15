@@ -1,34 +1,31 @@
 'use client'
 
-import { User } from '@supabase/supabase-js'
+import { useState } from 'react'
 
-import { DataProvider, useDataContext } from '@/components/context'
 import BreakPage from '@/components/zone/break'
 import Breathe from '@/components/zone/deepbreath'
 import End from '@/components/zone/end'
 import PrepairSecond from '@/components/zone/prepair-second'
 import ZonePage from '@/components/zone/zone'
 
+const pages = ['prepair1', 'prepair2', 'zone', 'break', 'end']
+
 export const CurrentPhase = () => {
-  return (
-    <>
-      <DataProvider>
-        <Page />
-      </DataProvider>
-    </>
-  )
-}
-
-function Page() {
-  const { phase } = useDataContext()
+  const [current, setCurrent] = useState(pages[0])
 
   return (
     <>
-      {phase == 'prepair1' && <Breathe />}
-      {phase == 'prepair2' && <PrepairSecond />}
-      {phase == 'zone' && <ZonePage />}
-      {phase == 'break' && <BreakPage />}
-      {phase == 'end' && <End />}
+      {current == pages[0] ? (
+        <Breathe setCurrent={setCurrent} />
+      ) : current == pages[1] ? (
+        <PrepairSecond setCurrent={setCurrent} />
+      ) : current == pages[2] ? (
+        <ZonePage setCurrent={setCurrent} />
+      ) : current == pages[3] ? (
+        <BreakPage setCurrent={setCurrent} />
+      ) : (
+        <End />
+      )}
     </>
   )
 }

@@ -1,17 +1,16 @@
 'use client'
 
+import { useEffect, useRef, useState } from 'react'
+
 import { Badge } from '@/components/ui/badge'
-import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react'
-import { useDataContext } from '../context'
 
 const arr = ['in', 'out']
 
-export default function Deepbreath() {
+export default function Deepbreath({ setCurrent }: { setCurrent: any }) {
   const [count, setCount] = useState(0)
   const [round, setRound] = useState(0)
   const [status, setStatus] = useState('in')
   const [started, setStarted] = useState(false)
-  const { setPhase } = useDataContext()
   const audioRef = useRef<null | any>(null)
 
   const handleClick = () => {
@@ -32,7 +31,7 @@ export default function Deepbreath() {
 
       return () => clearInterval(intervalId)
     } else {
-      setPhase('prepair2')
+      setCurrent('prepair2')
     }
   }, [count, round, started])
 
