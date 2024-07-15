@@ -51,7 +51,7 @@ async function Records() {
 }
 
 function daysAgo(date: string) {
-  // const now = new Date().toUTCString()
+  const now = new Date().toUTCString()
   // console.log(now)
   // const s = Date.parse(now)
   // const parts: any = date.split(/[-T:.]/)
@@ -61,8 +61,8 @@ function daysAgo(date: string) {
   // const parts: string[] = date.split(/[-T:.]/)
   // console.log(parts)
   // const givenDate = new Date(date)
-  const d = new Date(date).toString()
-  return d
+  const created_at = new Date(date).toString()
+  return `created_at: ${created_at} \n now: ${now}`
   // const givenDate = new Date(parse)
   // console.log(givenDate)
 
