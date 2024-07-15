@@ -1,3 +1,4 @@
+import { User } from '@supabase/supabase-js'
 import { createContext, useState, useContext } from 'react'
 
 const defaultProvider: any = {
@@ -12,11 +13,11 @@ export function useDataContext() {
 }
 
 export function DataProvider({ children }: { children: React.ReactNode }) {
-  const [phase, setPhase] = useState('prepair1')
+  const [user, setUser] = useState<User | null>(null)
 
   const value = {
-    phase,
-    setPhase,
+    user,
+    setUser,
   }
 
   return <DataContext.Provider value={value}>{children}</DataContext.Provider>
