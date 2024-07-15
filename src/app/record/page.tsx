@@ -52,39 +52,26 @@ async function Records() {
 
 function daysAgo(date: string) {
   const now = new Date().toUTCString()
-  // console.log(now)
-  // const s = Date.parse(now)
-  // const parts: any = date.split(/[-T:.]/)
-  // console.log(parts)
-  // const givenDate = new Date(Date.UTC(parts[0], parts[1] - 1, parts[2], parts[3], parts[4], parts[5], parts[6]))
-  // console.log(givenDate)
-  // const parts: string[] = date.split(/[-T:.]/)
-  // console.log(parts)
-  // const givenDate = new Date(date)
-  const created_at = new Date(date).toString()
-  return `created_at: ${created_at} \n now: ${now}`
-  // const givenDate = new Date(parse)
-  // console.log(givenDate)
+  const created_at = new Date(date).getTime()
+  const differenceInTime = Date.parse(now) - created_at
+  const differenceInDays = Math.floor(differenceInTime / (1000 * 3600 * 24))
 
-  // const differenceInTime = s - parse
-  // const differenceInDays = Math.floor(differenceInTime / (1000 * 3600 * 24))
+  if (differenceInDays === 0) {
+    const differenceInHours = Math.floor(differenceInTime / (1000 * 3600))
 
-  // if (differenceInDays === 0) {
-  //   const differenceInHours = Math.floor(differenceInTime / (1000 * 3600))
+    if (differenceInHours === 0) {
+      const differenceInMinutes = Math.floor(differenceInTime / (1000 * 60))
 
-  //   if (differenceInHours === 0) {
-  //     const differenceInMinutes = Math.floor(differenceInTime / (1000 * 60))
-
-  //     if (differenceInMinutes === 0) {
-  //       const differenceInSeconds = Math.floor(differenceInTime / 1000)
-  //       return `${differenceInSeconds}秒前`
-  //     } else {
-  //       return `${differenceInMinutes}分前`
-  //     }
-  //   } else {
-  //     return `${differenceInHours}時間前`
-  //   }
-  // } else {
-  //   return `${differenceInDays}日前`
-  // }
+      if (differenceInMinutes === 0) {
+        const differenceInSeconds = Math.floor(differenceInTime / 1000)
+        return `${differenceInSeconds}秒前`
+      } else {
+        return `${differenceInMinutes}分前`
+      }
+    } else {
+      return `${differenceInHours}時間前`
+    }
+  } else {
+    return `${differenceInDays}日前`
+  }
 }
