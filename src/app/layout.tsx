@@ -11,6 +11,8 @@ import { ModeToggle } from '@/components/mode-toggle'
 import { Sheet, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
 import { Avatar } from '@/components/avatar'
 import { Drawer } from '@/components/drawer'
+import { Provider } from '@/components/provider'
+import { DetectionUser } from '@/components/detection'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -28,11 +30,15 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <div className="mx-auto mt-4 flex h-10 w-full max-w-2xl items-center justify-end px-4">
-            <Drawer />
-          </div>
-          {children}
-          <Toaster />
+          <Provider>
+            <DetectionUser>
+              <div className="mx-auto mt-4 flex h-10 w-full max-w-2xl items-center justify-end px-4">
+                <Drawer />
+              </div>
+              {children}
+              <Toaster />
+            </DetectionUser>
+          </Provider>
         </ThemeProvider>
       </body>
     </html>
