@@ -2,16 +2,14 @@
 
 import { useEffect, useState } from 'react'
 
-import { useDataContext } from '@/components/context'
 import { Button } from '@/components/ui/button'
 
 // const initialCount = 60 * 50
 const initialCount = 1
 
-export default function ZonePage() {
+export default function ZonePage({ setCurrent }: { setCurrent: any }) {
   const [count, setCount] = useState(initialCount)
   const [run, setRun] = useState(false)
-  const { setPhase } = useDataContext()
 
   const handleStart = () => {
     setRun(true)
@@ -35,7 +33,7 @@ export default function ZonePage() {
     }
 
     if (count == 0) {
-      setPhase('break')
+      setCurrent('break')
     }
   }, [count, run])
 

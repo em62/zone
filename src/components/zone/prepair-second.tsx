@@ -2,12 +2,8 @@
 
 import { useEffect, useState } from 'react'
 
-import { useDataContext } from '@/components/context'
-
-export default function PrepairSecond() {
-  // const [count, setCount] = useState(60)
+export default function PrepairSecond({ setCurrent }: { setCurrent: any }) {
   const [count, setCount] = useState(1)
-  const { setPhase } = useDataContext()
 
   useEffect(() => {
     if (count > 0) {
@@ -17,7 +13,7 @@ export default function PrepairSecond() {
 
       return () => clearInterval(intervalId)
     } else {
-      setPhase('zone')
+      setCurrent('zone')
     }
   }, [count])
 
