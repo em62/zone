@@ -5,7 +5,8 @@ import { ArrowLeft } from 'lucide-react'
 
 import { getRecord, getUser } from '@/db/actions'
 import { Record } from '@/type/record'
-import { Rec } from '@/components/record-client'
+
+export const revalidate = 3600
 
 export default function RecordPage() {
   return (
@@ -16,10 +17,9 @@ export default function RecordPage() {
           Back
         </Link>
         <h1 className="text-3xl font-bold leading-tight tracking-tighter md:text-4xl lg:leading-[1.1]">Record</h1>
-        {/* <Suspense fallback={<p>loading...</p>}>
+        <Suspense fallback={<p>loading...</p>}>
           <Records />
-        </Suspense> */}
-        <Rec />
+        </Suspense>
       </section>
     </>
   )
