@@ -6,7 +6,6 @@ import { headers } from 'next/headers'
 import { redirect } from 'next/navigation'
 
 import { createClient } from '@/db/server'
-const db = createClient()
 
 export const signIn = async () => {
   const db = createClient()
@@ -27,20 +26,18 @@ export const signIn = async () => {
 }
 
 export const getUser = cache(async () => {
+  const db = createClient()
   const {
     data: { user },
   } = await db.auth.getUser()
   return user
 })
 
-export const getRecord = unstable_cache(
-  async (id: string) => {
-    const { data } = await db.from('records').select().eq('user_id', id).order('created_at', { ascending: false })
-    return data
-  },
-  ['records-subs'],
-  { revalidate: 3600 },
-)
+export const getRecord = cache(async (id: string) => {
+  const db = createClient()
+  const { data } = await db.from('records').select().eq('user_id', id).order('created_at', { ascending: false })
+  return data
+})
 
 export const insertRecord = async (text: string) => {
   const db = createClient()
