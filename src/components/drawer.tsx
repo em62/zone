@@ -1,4 +1,3 @@
-import { Account } from '@/components/account'
 import { ModeToggle } from '@/components/mode-toggle'
 import { Sheet, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
 import { Avatar } from '@/components/avatar'

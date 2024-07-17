@@ -1,7 +1,7 @@
 'use server'
 
 import { cache } from 'react'
-import { revalidatePath } from 'next/cache'
+import { revalidatePath, unstable_cache } from 'next/cache'
 import { headers } from 'next/headers'
 import { redirect } from 'next/navigation'
 
