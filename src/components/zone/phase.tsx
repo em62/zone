@@ -2,13 +2,14 @@
 
 import { useEffect, useState } from 'react'
 
+import { User } from '@supabase/supabase-js'
+
 import BreakPage from '@/components/zone/break'
 import Breathe from '@/components/zone/deepbreath'
 import End from '@/components/zone/end'
 import PrepairSecond from '@/components/zone/prepair-second'
 import ZonePage from '@/components/zone/zone'
 import { getUser } from '@/db/queries'
-import { User } from '@supabase/supabase-js'
 
 const pages = ['prepair1', 'prepair2', 'zone', 'break', 'end']
 
