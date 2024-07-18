@@ -1,12 +1,14 @@
+import { Suspense } from 'react'
+import Image from 'next/image'
+
+import { PersonIcon } from '@radix-ui/react-icons'
+
+import { Avatar } from '@/components/avatar'
+import { Button } from '@/components/ui/button'
 import { ModeToggle } from '@/components/mode-toggle'
 import { Sheet, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
-import { Avatar } from '@/components/avatar'
-import { Suspense } from 'react'
-import { getUser, signIn } from '@/db/actions'
-import { Button } from './ui/button'
-import Image from 'next/image'
-import { CircleUser } from 'lucide-react'
-import { PersonIcon } from '@radix-ui/react-icons'
+import { signIn } from '@/db/actions'
+import { getUser } from '@/db/queries'
 
 export async function Drawer() {
   const user = await getUser()
