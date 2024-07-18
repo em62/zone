@@ -3,10 +3,11 @@
 import { useEffect, useRef, useState } from 'react'
 
 import { Badge } from '@/components/ui/badge'
+import { Button } from '../ui/button'
 
 const arr = ['in', 'out']
 
-export default function Deepbreath({ setCurrent }: { setCurrent: any }) {
+export default function Deepbreath({ handleNextScene }: { handleNextScene: () => void }) {
   const [count, setCount] = useState(0)
   const [round, setRound] = useState(0)
   const [status, setStatus] = useState('in')
@@ -31,7 +32,7 @@ export default function Deepbreath({ setCurrent }: { setCurrent: any }) {
 
       return () => clearInterval(intervalId)
     } else {
-      setCurrent('prepair2')
+      handleNextScene()
     }
   }, [count, round, started])
 
@@ -50,7 +51,9 @@ export default function Deepbreath({ setCurrent }: { setCurrent: any }) {
         </div>
       ) : (
         <>
-          <button onClick={handleClick}>submit</button>
+          <Button size="sm" onClick={handleClick}>
+            submit
+          </Button>
         </>
       )}
     </>
