@@ -7,23 +7,23 @@ import { User } from '@supabase/supabase-js'
 
 import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
-import { getUser, insertRecord } from '@/db/actions'
+
 import { Check, Loader2 } from 'lucide-react'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { toast } from 'sonner'
+import { setRecords } from '@/db/queries'
 
-export default function End() {
+export default function End({ user }: { user: User | null }) {
   const [value, setValue] = useState('')
   const [disabled, setDisabled] = useState(true)
   const [loading, setLoading] = useState(false)
   const [updated, setUpdated] = useState(false)
-  const [user, setUser] = useState<User | null>(null)
 
-  const handleSubmit = async () => {
+  const handleSetRecords = async () => {
     setDisabled(true)
     setLoading(true)
 
-    const error = await insertRecord(value)
+    const error = await setRecords(value)
     if (!error) {
       setLoading(false)
       setUpdated(true)
@@ -35,7 +35,13 @@ export default function End() {
         },
       })
     } else {
-      console.error()
+      toast('失敗', {
+        description: 'レコードへの記録に失敗しました',
+        action: {
+          label: '削除',
+          onClick: () => {},
+        },
+      })
     }
   }
 
@@ -46,14 +52,6 @@ export default function End() {
       setDisabled(true)
     }
   }, [value])
-
-  useEffect(() => {
-    const userSetting = async () => {
-      const data = await getUser()
-      setUser(data)
-    }
-    userSetting()
-  }, [])
 
   return (
     <div className="mx-auto max-w-2xl px-4">
@@ -70,7 +68,7 @@ export default function End() {
             </div>
           </CardContent>
           <CardFooter className="flex-col gap-4 sm:flex-row">
-            <Button className="w-full sm:w-auto" type="button" disabled={disabled} size="sm" variant="default" onClick={handleSubmit}>
+            <Button className="w-full sm:w-auto" type="button" disabled={disabled} size="sm" variant="default" onClick={handleSetRecords}>
               {loading ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />

@@ -19,7 +19,7 @@ export default function Deepbreath({ setCurrent }: { setCurrent: any }) {
 
   useEffect(() => {
     if (!started) return
-    if (round <= 1) {
+    if (round <= 10) {
       const intervalId = setInterval(() => {
         setCount(count + 1)
         if (count % 4 == 0) {
