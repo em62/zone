@@ -36,7 +36,7 @@ export default function Home() {
         <p className="max-w-2xl text-lg font-light text-foreground">Creating an environment is important for concentrating on learning. </p>
         <div className="flex w-full items-center justify-start gap-2 py-2">
           <Button size="sm" asChild>
-            <Link href="/zone">Get Started</Link>
+            <Link href="/play">Get Started</Link>
           </Button>
           <Button size="sm" variant="outline" asChild>
             <Link href="/record">Record</Link>
