@@ -2,10 +2,9 @@
 
 import { useEffect, useState } from 'react'
 
-// const initialCount = 10 * 60
-const initialCount = 1
+const initialCount = 10 * 60
 
-export default function BreakPage({ setCurrent }: { setCurrent: any }) {
+export default function BreakPage({ handleNextScene }: { handleNextScene: () => void }) {
   const [count, setCount] = useState(initialCount)
 
   useEffect(() => {
@@ -16,7 +15,7 @@ export default function BreakPage({ setCurrent }: { setCurrent: any }) {
 
       return () => clearInterval(intervalId)
     } else {
-      setCurrent('end')
+      handleNextScene()
     }
   }, [count])
 

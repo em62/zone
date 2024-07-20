@@ -4,10 +4,9 @@ import { useEffect, useState } from 'react'
 
 import { Button } from '@/components/ui/button'
 
-// const initialCount = 60 * 50
-const initialCount = 1
+const initialCount = 60 * 50
 
-export default function ZonePage({ setCurrent }: { setCurrent: any }) {
+export default function ZonePage({ handleNextScene }: { handleNextScene: () => void }) {
   const [count, setCount] = useState(initialCount)
   const [run, setRun] = useState(false)
 
@@ -33,7 +32,7 @@ export default function ZonePage({ setCurrent }: { setCurrent: any }) {
     }
 
     if (count == 0) {
-      setCurrent('break')
+      handleNextScene()
     }
   }, [count, run])
 
